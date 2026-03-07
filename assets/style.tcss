@@ -14,10 +14,15 @@ Button:focus {
 }
 
 #logo{
+  margin-top: 1;
   height: auto;
   margin-bottom: 6;
 }
 
 #menu{
+  height: auto;
+}
+
+#counter{
   height: auto;
 }
