@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -12,4 +12,4 @@ if [ ! -d ".venv" ]; then
   pip install -r requirements.txt
 fi
 
-source .venv/bin/activate && exec python -m src.main
+.venv/bin/python -m src.main
