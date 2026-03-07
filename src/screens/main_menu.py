@@ -2,7 +2,7 @@ from textual.screen import Screen
 from textual.containers import Center, CenterMiddle
 from textual.widgets import Button, Label
 
-from src.screens.logo import TITLE_ASCII
+from assets.logo import TITLE_ASCII
 from src.screens.game_screen import GameScreen
 
 class MainMenu(Screen):
