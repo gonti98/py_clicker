@@ -12,4 +12,4 @@ if [ ! -d ".venv" ]; then
   pip install -r requirements.txt
 fi
 
-.venv/bin/python -m src.main
+.venv/bin/python -m main
