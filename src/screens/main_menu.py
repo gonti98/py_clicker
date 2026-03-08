@@ -26,7 +26,7 @@ class MainMenu(Screen):
             case "continue":
                 self.app.notify("Continue!")
             case "start":
-                self.app.push_screen(GameScreen())
+                self.app.push_screen("Game")
             case "settings":
                 self.app.notify("Settings!")
             case _:

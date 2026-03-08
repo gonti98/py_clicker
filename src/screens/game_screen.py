@@ -28,4 +28,4 @@ class GameScreen(Screen):
 
     def action_press_escape(self) -> None:
         Temp.save(self.points)
-        self.app.pop_screen()
+        self.app.switch_screen("Menu")
