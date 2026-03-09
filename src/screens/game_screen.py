@@ -11,13 +11,7 @@ class GameScreen(Screen):
     BINDINGS = [
         ("space", "press_space", "to get coins"),
         ("escape", "press_escape", "to main menu"),
-        ("1", "press_1", "buy Farm"),
-        ("2", "press_2", "-1000"),
     ]
-
-    # coins validate >= 0
-    def validate_coins(self, coins: int) -> int:
-        return max(0, coins)
 
     def __init__(self, new_game: bool = True, **kwargs):
         super().__init__(**kwargs)
@@ -34,7 +28,8 @@ class GameScreen(Screen):
             self.coins = Temp.load()
 
     def watch_coins(self, coins: str):
-        self.query_one("#counter", Digits).update(f"{coins}")
+        validated_coins = max(0, coins)
+        self.query_one("#counter", Digits).update(f"{validated_coins}")
 
     def action_press_space(self):
         self.coins = self.grind.grind(self.coins)
