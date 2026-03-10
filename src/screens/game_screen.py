@@ -7,9 +7,9 @@ from src.utils.temp_save_load import Temp
 from src.game.grinding import Grind
 
 class GameScreen(Screen):
+    BINDINGS = BINDINGS["GameScreen"]
     coins: reactive[int] = reactive(0)
     grind: Grind = Grind(0.5, 1)
-    BINDINGS = BINDINGS["GameScreen"]
 
     def __init__(self, new_game: bool = True, **kwargs):
         super().__init__(**kwargs)

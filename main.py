@@ -12,7 +12,6 @@ class MyGameApp(App):
     "Settings": SettingsMenu,
     }
 
-
     def on_mount(self) -> None:
         self.push_screen("Menu")
 

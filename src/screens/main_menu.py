@@ -10,6 +10,7 @@ from src.utils.temp_save_load import Temp
 
 class MainMenu(Screen):
     BINDINGS = BINDINGS["MainMenu"]
+
     def compose(self):
         yield Center(Label(TITLE_ASCII, id="logo"))
         yield CenterMiddle(
