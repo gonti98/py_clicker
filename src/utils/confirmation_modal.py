@@ -1,9 +1,6 @@
-from pathlib import Path
-
 from textual.screen import ModalScreen
 from textual.widgets import Button, Label
 from textual.containers import Grid
-from textual import work
 
 class ConfirmationModal(ModalScreen[bool]):
     def __init__(self, message: str):
