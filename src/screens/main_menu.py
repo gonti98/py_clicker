@@ -47,7 +47,7 @@ class MainMenu(Screen):
                 self.app.switch_screen(SettingsMenu())
             case "quit":
                 self.app.push_screen(
-                    ConfirmationModal("Napewno wyjść?"),
+                    ConfirmationModal("EXIT?"),
                     lambda result: self.app.exit() if result else None
                 )
             case _:
