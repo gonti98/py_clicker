@@ -53,3 +53,12 @@ class Grind:
             "income_upgrade_count": self.income_upgrade_count,
             "cooldown_upgrade_count": self.cooldown_upgrade_count,
         }
+
+    @classmethod
+    def from_dict(cls, data: dict) -> 'Grind':
+        grind = cls()
+        grind.income_per_click = data.get("income_per_click", 1)
+        grind.cooldown = data.get("cooldown", 1.0)
+        grind.income_upgrade_count = data.get("income_upgrade_count", 0)
+        grind.cooldown_upgrade_count = data.get("cooldown_upgrade_count", 0)
+        return grind

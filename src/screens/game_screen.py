@@ -1,3 +1,4 @@
+import time
 from textual.screen import Screen
 from textual.widgets import Footer, Digits, Label
 from textual.reactive import reactive
@@ -14,6 +15,8 @@ class GameScreen(Screen):
     def __init__(self, new_game: bool = True, **kwargs):
         super().__init__(**kwargs)
         self.new_game = new_game
+        self.start_time = time.time()
+        self.total_playtime = 0.0
 
     def compose(self):
         yield Digits(id="counter")
@@ -24,9 +27,11 @@ class GameScreen(Screen):
         if self.new_game:
             self.reset_game()
         else:
-            loaded_coins = SaveManager.load_game()
-            if loaded_coins is not None:
-                self.coins = loaded_coins
+            game_state = SaveManager.load_game()
+            if game_state is not None:
+                self.coins = game_state["coins"]
+                self.grind = game_state["grind"]
+                self.total_playtime = game_state["metadata"].get("total_playtime", 0.0)
             else:
                 self.reset_game()
         self.watch_coins(self.coins)
@@ -51,5 +56,7 @@ class GameScreen(Screen):
         self.coins = self.grind.cooldown_upgrade(self.coins)
 
     def action_press_escape(self):
-        SaveManager.save_game(self.coins, self.grind)
+        session_time = time.time() - self.start_time
+        self.total_playtime += session_time
+        SaveManager.save_game(self.coins, self.grind, self.total_playtime)
         self.app.switch_screen("Menu")
