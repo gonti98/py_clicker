@@ -5,9 +5,9 @@ BINDINGS = {
     ],
     "GameScreen": [
         ("escape", "press_escape", "to main menu"),
-        ("space", "press_space", "Single Byte"),
-        ("1", "press_1", "Hard Drive"),
-        ("2", "press_2", "Data Center"),
+        ("space", "press_space", "To get coins"),
+        ("1", "press_1", "Upgrade income"),
+        ("2", "press_2", "Upgrade cooldown"),
     ],
     "MainMenu": [
         ("c", "press_c", "Continue"),

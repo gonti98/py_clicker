@@ -1,0 +1,6 @@
+[project]
+name = "PyClicker"
+version = "alpha 0.0.1"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.14.3"
