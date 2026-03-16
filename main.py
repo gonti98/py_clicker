@@ -1,11 +1,12 @@
 from textual.app import App, ComposeResult
 
-from src.config.bindings import BINDINGS
+from src.config.bindings import BINDINGS, GlobalActions
 from src.screens.game_screen import GameScreen
 from src.screens.main_menu import MainMenu
 from src.screens.settings_menu import SettingsMenu
 
-class MyGameApp(App):
+
+class MyGameApp(GlobalActions, App):
     ESCAPE_TO_MINIMIZE = False
     NOTIFICATION_TIMEOUT = 2
     CSS_PATH = [
@@ -23,11 +24,6 @@ class MyGameApp(App):
     def on_mount(self) -> None:
         self.push_screen("Menu")
 
-    def action_press_j(self):
-        self.action_focus_next()
-
-    def action_press_k(self):
-        self.action_focus_previous()
 
 if __name__ == "__main__":
     app = MyGameApp()

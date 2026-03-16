@@ -1,9 +1,9 @@
+from src.config.bindings import SettingsMenuActions, BINDINGS
 from textual.screen import Screen
 from textual.widgets import Footer
 
-from src.config.bindings import BINDINGS
 
-class SettingsMenu(Screen):
+class SettingsMenu(SettingsMenuActions, Screen):
     BINDINGS = BINDINGS["SettingsMenu"]
 
     def compose(self):

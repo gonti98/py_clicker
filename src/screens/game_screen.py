@@ -1,14 +1,15 @@
 import time
-from textual.screen import Screen
-from textual.widgets import Footer, Digits, Label
 from textual.reactive import reactive
+from textual.screen import Screen
+from textual.widgets import Digits, Footer, Label
 
-from src.config.bindings import BINDINGS
-from src.utils.save_manager import SaveManager
+from src.config.bindings import BINDINGS, GameActions
+from src.game.buildings import BUILDINGS, Building
 from src.game.grinding import Grind
-from src.game.buildings import Building, BUILDINGS
+from src.utils.save_manager import SaveManager
 
-class GameScreen(Screen):
+
+class GameScreen(GameActions, Screen):
     BINDINGS = BINDINGS["GameScreen"]
 
     def __init__(self, new_game: bool = True, **kwargs):
@@ -73,31 +74,6 @@ class GameScreen(Screen):
                 f"{name}: {building.count} (Income: {income:.5g}, Cost: {cost:.5g})"
             )
         buildings_label.update("\n".join(building_infos))
-
-    def action_press_space(self):
-        self.coins = self.grind.click(self.coins)
-    def action_press_u(self):
-        self.coins = self.grind.income_upgrade(self.coins)
-    def action_press_c(self):
-        self.coins = self.grind.cooldown_upgrade(self.coins)
-    def action_press_1(self):
-        self.coins = BUILDINGS["meadow"].buy(self.coins)
-    def action_press_2(self):
-        self.coins = BUILDINGS["grove"].buy(self.coins)
-    def action_press_3(self):
-        self.coins = BUILDINGS["forge"].buy(self.coins)
-    def action_press_4(self):
-        self.coins = BUILDINGS["tower"].buy(self.coins)
-    def action_press_5(self):
-        self.coins = BUILDINGS["alchemist"].buy(self.coins)
-    def action_press_6(self):
-        self.coins = BUILDINGS["portal"].buy(self.coins)
-    def action_press_7(self):
-        self.coins = BUILDINGS["dragon"].buy(self.coins)
-    def action_press_8(self):
-        self.coins = BUILDINGS["citadel"].buy(self.coins)
-    def action_press_9(self):
-        self.coins = BUILDINGS["worldtree"].buy(self.coins)
 
     def action_press_escape(self):
         session_time = time.time() - self.start_time

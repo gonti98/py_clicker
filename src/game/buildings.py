@@ -2,7 +2,9 @@ import time
 from math import pow
 from typing import Dict
 
+
 GROWTH_RATE = 1.15
+
 
 class Building:
     def __init__(self, tick_interval: float, income_per_tick: int, base_cost: int):

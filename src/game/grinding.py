@@ -1,7 +1,10 @@
 import time
 from math import pow
+from typing import Dict
+
 
 GROWTH_RATE = 1.15
+
 
 class Grind:
     def __init__(self):

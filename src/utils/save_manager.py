@@ -1,10 +1,11 @@
 import json
-from pathlib import Path
-from typing import Optional, Dict, Any
 import time
+from pathlib import Path
+from typing import Any, Dict, Optional
 
+from src.game.buildings import BUILDINGS, Building
 from src.game.grinding import Grind
-from src.game.buildings import Building, BUILDINGS
+
 
 class SaveManager:
     PROJECT_ROOT = Path(__file__).parent.parent.parent

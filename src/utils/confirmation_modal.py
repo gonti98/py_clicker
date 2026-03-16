@@ -1,8 +1,11 @@
+from textual.containers import Grid
 from textual.screen import ModalScreen
 from textual.widgets import Button, Label
-from textual.containers import Grid
+
 
 class ConfirmationModal(ModalScreen[bool]):
+    AUTO_FOCUS = "#no"
+
     def __init__(self, message: str):
         super().__init__()
         self.message = message
