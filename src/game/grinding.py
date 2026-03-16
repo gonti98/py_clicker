@@ -1,4 +1,5 @@
 import time
+from math import pow
 
 GROWTH_RATE = 1.15
 
@@ -33,7 +34,7 @@ class Grind:
     def income_upgrade(self, coins: int) -> int:
         cost = self.next_income_upgrade_cost
         if coins >= cost:
-            self.income_per_click += 1
+            self.income_per_click = (self.income_per_click + 0.2) * 1.1
             self.income_upgrade_count += 1
             return coins - cost
         return coins
@@ -47,18 +48,16 @@ class Grind:
         return coins
 
     def to_dict(self) -> dict:
-        return {
-            "income_per_click": self.income_per_click,
-            "cooldown": self.cooldown,
-            "income_upgrade_count": self.income_upgrade_count,
-            "cooldown_upgrade_count": self.cooldown_upgrade_count,
-        }
+        data = self.__dict__.copy()
+        data.pop('last_click_time', None)
+        data.pop('base_income_upgrade_cost', None)
+        data.pop('base_cooldown_upgrade_cost', None)
+        return data
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Grind':
         grind = cls()
-        grind.income_per_click = data.get("income_per_click", 1)
-        grind.cooldown = data.get("cooldown", 1.0)
-        grind.income_upgrade_count = data.get("income_upgrade_count", 0)
-        grind.cooldown_upgrade_count = data.get("cooldown_upgrade_count", 0)
+        for key, value in data.items():
+            setattr(grind, key, value)
+        grind.last_click_time = time.time()
         return grind
